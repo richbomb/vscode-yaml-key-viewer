@@ -1,29 +1,19 @@
 import * as vscode from 'vscode';
-import * as E from 'fp-ts/lib/Either';
 
-import { FIND_KEY_REGEX, Error } from './constants';
+import { FIND_KEY_REGEX, Error } from "./constants";
 import {
     isKey,
     isCommentLine,
     textIndentations,
     isUnnecessaryLine,
-    findLineOfClosestKey,
-} from './util';
+} from "./util";
 
 function parseYaml({
     document,
     selection,
-}: vscode.TextEditor): E.Either<Error, unknown> {
+}: vscode.TextEditor): {} {
     const selectedLine = document.lineAt(selection.active);
-
-    if (selectedLine.isEmptyOrWhitespace) {
-        return E.left(Error.BlankLine);
-    }
-
-    if (isCommentLine(selectedLine.text)) {
-        return E.left(Error.CommentLine);
-    }
-
+    console.log(selectedLine)
     const range = new vscode.Range(
         0,
         0,
@@ -32,27 +22,22 @@ function parseYaml({
     );
 
     const lines = document.getText(range).split('\n');
-
-    // Remove the first line of `---`
+    console.log(lines)
+    // Remove the first line containing `---`
     lines.shift();
 
-    const expectedIndentationLine = isKey(selectedLine.text)
-        ? selectedLine.text
-        : findLineOfClosestKey(selectedLine.text, lines);
+    const expectedLineSpace = textIndentations(selectedLine.text);
+    console.log(expectedLineSpace)
+    console.log(lines.filter(isUnnecessaryLine))
+    return lines.filter(isUnnecessaryLine).reduce((result, line) => {
+      const spaces = textIndentations(line);
 
-    const expectedLineSpace = textIndentations(expectedIndentationLine);
+      if (expectedLineSpace.length >= spaces.length) {
+          result[spaces] = line.replace(FIND_KEY_REGEX, '$1').trim();
+      }
 
-    return E.right(
-        lines.filter(isUnnecessaryLine).reduce((result, line) => {
-            const spaces = textIndentations(line);
-
-            if (expectedLineSpace.length >= spaces.length) {
-                result[spaces] = line.replace(FIND_KEY_REGEX, '$1').trim();
-            }
-
-            return result;
+      return result;
         }, {})
-    );
 }
 
 export { parseYaml };

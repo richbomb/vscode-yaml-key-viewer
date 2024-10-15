@@ -1,40 +1,71 @@
-# YAML Key Viewer for Visual Studio Code
+# yamlKeyViewer README
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![GitHub](https://img.shields.io/github/release/CYBAI/vscode-yaml-key-viewer.svg?style=flat-square)](https://github.com/CYBAI/vscode-yaml-key-viewer/releases)
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/cybai.yaml-key-viewer.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=cybai.yaml-key-viewer)
-[![Travis](https://img.shields.io/travis/CYBAI/vscode-yaml-key-viewer.svg?style=flat-square)](https://travis-ci.org/CYBAI/vscode-yaml-key-viewer)
-[![David](https://img.shields.io/david/dev/CYBAI/vscode-yaml-key-viewer.svg?style=flat-square)](https://david-dm.org/CYBAI/vscode-yaml-key-viewer?type=dev)
+This is the README for your extension "yamlKeyViewer". After writing up a brief description, we recommend including the following sections.
 
-## Usage
+## Features
 
-You can use this extension to get the full path of the key where your cursor is on.
+Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-Use `Cmd-Shift-P` (Mac) or `Ctrl-Shift-P` (Windows/Linux).
+For example if there is an image subfolder under your extension project workspace:
 
-There are two commands:
-- `YAML: Get full key`: See the full key
-- `YAML: Copy full key to clipboard`: Copy the full key to clipboard
+\!\[feature X\]\(images/feature-x.png\)
 
-Example:
+> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-Use `YAML: Get full key` like below
+## Requirements
 
-![command](https://raw.githubusercontent.com/CYBAI/vscode-yaml-key-viewer/master/screenshots/command.png)
+If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-Then, it will show the full path the key where your cursor is on.
+## Extension Settings
 
-![result](https://raw.githubusercontent.com/CYBAI/vscode-yaml-key-viewer/master/screenshots/result.png)
+Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-## Installation
+For example:
 
-1. Install *Visual Studio Code*
-2. Launch *Code*
-3. From the command palette `Ctrl-Shift-P` (Windows, Linux) or `Cmd-Shift-P` (OSX)
-4. Select `Install Extension`
-5. Choose the extension `YAML key viewer`
-6. Reload *Visual Studio Code*
+This extension contributes the following settings:
 
-## License
-[MIT](LICENSE.md)
+* `myExtension.enable`: Enable/disable this extension.
+* `myExtension.thing`: Set to `blah` to do something.
 
+## Known Issues
+
+Calling out known issues can help limit users opening duplicate issues against your extension.
+
+## Release Notes
+
+Users appreciate release notes as you update your extension.
+
+### 1.0.0
+
+Initial release of ...
+
+### 1.0.1
+
+Fixed issue #.
+
+### 1.1.0
+
+Added features X, Y, and Z.
+
+---
+
+## Following extension guidelines
+
+Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+
+* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+
+## Working with Markdown
+
+You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+
+* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
+* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
+* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+
+## For more information
+
+* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+
+**Enjoy!**

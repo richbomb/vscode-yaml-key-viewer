@@ -1,61 +1,57 @@
 {
-    "name": "yaml-key-viewer",
-    "displayName": "YAML key viewer",
-    "description": "YAML key viewer for Visual Studio Code",
-    "version": "0.2.2",
-    "publisher": "cybai",
-    "author": {
-        "email": "cyb.ai.815@gmail.com",
-        "name": "cybai",
-        "url": "https://github.com/cybai"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/CYBAI/vscode-yaml-key-viewer.git"
-    },
-    "bugs": {
-        "url": "https://github.com/CYBAI/vscode-yaml-key-viewer/issues"
-    },
-    "homepage": "https://github.com/CYBAI/vscode-yaml-key-viewer/blob/master/README.md",
-    "engines": {
-        "vscode": "^1.39.0"
-    },
-    "categories": [
-        "Other"
+  "name": "yamlKeyViewer",
+  "displayName": "YamlKeyViewer",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "yamlKeyViewer.copyKeyPath",
+        "title": "Copy Key Path"
+      },
+      {
+        "command": "yamlKeyViewer.goToKey",
+        "title": "Go To Key"
+      }
     ],
-    "activationEvents": [
-        "onCommand:cybai.parseYaml",
-        "onCommand:cybai.parseYaml.copyToClipboard"
-    ],
-    "main": "./out/src/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "cybai.parseYaml",
-                "title": "YAML: Get full key"
-            },
-            {
-                "command": "cybai.parseYaml.copyToClipboard",
-                "title": "YAML: Copy full key to clipboard"
-            }
-        ]
-    },
-    "scripts": {
-        "test": "node ./out/test/index",
-        "clean": "rm -r out",
-        "vscode:prepublish": "tsc"
-    },
-    "devDependencies": {
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.12.3",
-        "@types/vscode": "^1.39.0",
-        "eslint": "^6.6.0",
-        "mocha": "^6.2.2",
-        "typescript": "^3.6.4",
-        "vscode-test": "^1.2.2"
-    },
-    "dependencies": {
-        "fp-ts": "^2.1.1"
+    "menus": {
+      "editor/context": [
+        {
+          "command": "yamlKeyViewer.copyKeyPath",
+          "when": "editorLangId == yaml"
+        },
+        {
+          "command": "yamlKeyViewer.goToKey",
+          "when": "editorLangId == ruby || editorLangId == haml"
+        }
+      ]
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
 }

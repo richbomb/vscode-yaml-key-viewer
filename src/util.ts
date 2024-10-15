@@ -1,4 +1,4 @@
-import { FIND_KEY_REGEX } from './constants';
+import { FIND_KEY_REGEX } from "./constants"
 
 /**
  * Check if the line is empty string or only whitespace(s) or not
@@ -23,16 +23,6 @@ function isKey(str: string): boolean {
 }
 
 /**
- * Find the closet key
- */
-function findLineOfClosestKey(
-    selectedLineText: string,
-    lines: Array<string>
-): string {
-    return lines.filter(line => !isCommentLine(line) && isKey(line)).pop();
-}
-
-/**
  * Get the spaces of the string, if it doesn't contain
  * spaces, it will return an array with empty string.
  */
@@ -51,7 +41,6 @@ function isUnnecessaryLine(line: string): boolean {
 export {
     isKey,
     isCommentLine,
-    findLineOfClosestKey,
     textIndentations,
     isEmptyOrWhitespace,
     isUnnecessaryLine,
